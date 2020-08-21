@@ -1,6 +1,6 @@
 # agate
 
-TODO: Write a description here
+Learning about crystal programming language
 
 ## Installation
 
