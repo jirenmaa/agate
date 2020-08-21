@@ -1,6 +1,9 @@
-# TODO: Write documentation for `Agate`
+require "./agate/hello"
+
 module Agate
   VERSION = "0.1.0"
 
-  # TODO: Put your code here
+  myGreet = Hello.new
+  puts myGreet.time
+  puts myGreet.greet
 end
