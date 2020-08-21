@@ -1,9 +1,22 @@
-require "./agate/hello"
+require "./agate/supermarket/beverages"
+require "./agate/supermarket/databases"
 
 module Agate
-  VERSION = "0.1.0"
+  puts "Time : #{Time.local} \n\n"
 
-  myGreet = Hello.new
-  puts myGreet.time
-  puts myGreet.greet
+  market = Beverages.new
+  db = Database.new
+
+  # db.create_database
+  market.insert_data
+
+  # name = {
+  #   "app" => 123,
+  #   "app2" => 123,
+  # }
+
+  # puts typeof(name)
+  # puts typeof(Hash(String, Int32).new)
+  # puts name.size
+  # puts typeof(name) == typeof(Hash(String, Int32).new)
 end
