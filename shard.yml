@@ -2,7 +2,15 @@ name: agate
 version: 0.1.0
 
 authors:
-  - your-name-here <your-email-here>
+  - jirenmaa <your-email-here>
+
+description:
+  Learning crystal programming language
+
+dependencies:
+  redis:
+    github: stefanwille/crystal-redis
+    version: ~> 2.6.0
 
 targets:
   agate:
