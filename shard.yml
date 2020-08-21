@@ -13,6 +13,10 @@ dependencies:
     version: ~> 2.6.0
   crest:
     github: mamantoha/crest
+  db:
+    github: crystal-lang/crystal-db
+  sqlite3:
+    github: crystal-lang/crystal-sqlite3
 
 targets:
   agate:
