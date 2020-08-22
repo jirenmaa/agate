@@ -2,6 +2,7 @@ require "./databases"
 
 class Beverages
   @category : String
+  @itemSize : Int32
   property items = {
     "Apple Juice" => 0,
     "Beer" => 0,
@@ -11,7 +12,6 @@ class Beverages
     "Tea" => 0,
     "Water" => 0,
   }
-  property itemSize : Int32
 
   def initialize
     @itemSize = items.size

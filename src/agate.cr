@@ -8,7 +8,9 @@ module Agate
   db = Database.new
 
   # db.create_database
-  market.insert_data
+  # market.insert_data
+
+  db.action("select *", "supermarket", ["items", "=", "Milk"])
 
   # name = {
   #   "app" => 123,
