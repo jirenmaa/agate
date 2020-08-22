@@ -12,7 +12,13 @@ TODO: Write usage instructions here
 
 ## Development
 
-TODO: Write development instructions here
+* Database
+
+    [ ] Update query
+
+    [ ] Delete query
+
+    [ ] Select query
 
 ## Contributing
 
