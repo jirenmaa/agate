@@ -13,12 +13,9 @@ TODO: Write usage instructions here
 ## Development
 
 * Database
-
-    [ ] Update query
-
-    [ ] Delete query
-
-    [ ] Select query
+    - [ ] Update query
+    - [ ] Delete query
+    - [x] Select query
 
 ## Contributing
 
