@@ -11,14 +11,4 @@ module Agate
   # market.insert_data
 
   db.action("select *", "supermarket", ["items", "=", "Milk"])
-
-  # name = {
-  #   "app" => 123,
-  #   "app2" => 123,
-  # }
-
-  # puts typeof(name)
-  # puts typeof(Hash(String, Int32).new)
-  # puts name.size
-  # puts typeof(name) == typeof(Hash(String, Int32).new)
 end
