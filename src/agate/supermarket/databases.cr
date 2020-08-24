@@ -20,13 +20,11 @@ class Database
 
     DB.open @ndb_path.to_s do |db|
       db.query_each q do |rs|
-        payload.merge!({
+        result << payload.merge({
           "item"     => rs.read.to_s,
           "stock"    => rs.read.to_s,
           "category" => rs.read.to_s,
         })
-
-        result << payload
       end
     end
 

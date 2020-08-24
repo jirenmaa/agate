@@ -16,14 +16,23 @@ class Beverages
   def initialize
     @itemSize = items.size
     @category = "Beverages"
-    db = Database.new
+    @db = Database.new
   end
 
   def insert_data()
-    db.insert(@items, @category)
+    @db.insert(@items, @category)
   end
 
   def show_data()
-    puts "showing data of beverages"
+    # items = @db.get("select *", "supermarket", ["items", "=", "Milk"])
+    items = @db.get("select *", "supermarket", ["category", "=", "Beverages"])
+
+    puts "| Item\t| Stock\t| Category |"
+    items.each do |val|
+      val.each do |key, value|
+        puts "#{value.to_s}"
+      end
+    end
+    # pp items
   end
 end

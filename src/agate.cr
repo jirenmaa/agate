@@ -4,17 +4,12 @@ require "./agate/supermarket/databases"
 module Agate
   puts "Time : #{Time.local} \n\n"
 
-  market = Beverages.new
+  beverages = Beverages.new
   db = Database.new
 
   # db.create_database
-  # market.insert_data
+  # beverages.insert_data
 
-  items = db.get("select *", "supermarket", ["items", "=", "Milk"])
-
-  items.each do |val|
-    val.each do |key, value|
-      puts "#{key.to_s} | #{value.to_s}"
-    end
-  end
+  # beverages.show_data("category", "=", "Beverages")
+  beverages.show_data()
 end
