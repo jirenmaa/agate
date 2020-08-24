@@ -10,5 +10,11 @@ module Agate
   # db.create_database
   # market.insert_data
 
-  db.action("select *", "supermarket", ["items", "=", "Milk"])
+  items = db.get("select *", "supermarket", ["items", "=", "Milk"])
+
+  items.each do |val|
+    val.each do |key, value|
+      puts "#{key.to_s} | #{value.to_s}"
+    end
+  end
 end

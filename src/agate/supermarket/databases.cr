@@ -5,49 +5,48 @@ class Database
   @stock_name : String
   @category : String
   @ndb_path : String
+  @db : Nil
 
   def initialize
     @table_name = "items"
     @stock_name = "stocks"
     @category = "category"
     @ndb_path = "sqlite3://./bin/database.db"
-
-    creating = true
-    begin
-      unless creating
-        DB.open @ndb_path.to_s do |db|
-          db.exec "create table supermarket (#{@table_name} text, #{@stock_name} integer, #{@category} text)"
-        end
-      else
-        raise "Database has been created in : \"./bin/database.db\""
-      end
-    rescue ex
-      puts ex.message
-    end
   end
 
-  def query(query)
+  def query(q)
+    result = Array(Hash(String, String)).new
+    payload = Hash(String, String).new
+
     DB.open @ndb_path.to_s do |db|
-      db.query_each query do |rs|
-        puts "item: #{rs.read}, stock: #{rs.read}"
+      db.query_each q do |rs|
+        payload.merge!({
+          "item"     => rs.read.to_s,
+          "stock"    => rs.read.to_s,
+          "category" => rs.read.to_s,
+        })
+
+        result << payload
       end
     end
+
+    return result
   end
 
   def action(action, table, where)
-    DB.open @ndb_path.to_s do |db|
-      if (where.size === 3)
-        operators = [">", ">=", "=", "<=", "<"]
-        field     = where[0]
-        operator  = where[1]
-        value     = where[2]
+    sql = ""
+    if (where.size === 3)
+      operators = [">", ">=", "=", "<=", "<"]
+      field = where[0]
+      operator = where[1]
+      value = where[2]
 
-        if (operators.includes? operator.to_s)
-          sql = "#{action} from #{table} where #{field} #{operator} \"#{value.to_s}\""
-          query(sql)
-        end
+      if (operators.includes? operator.to_s)
+        sql = "#{action} from #{table} where #{field} #{operator} \"#{value.to_s}\""
       end
     end
+
+    return query(sql)
   end
 
   def insert(args, category)
@@ -66,6 +65,7 @@ class Database
     end
   end
 
-  def delete(args)
+  def get(action, table, where)
+    return action(action, table, where)
   end
 end

@@ -16,10 +16,14 @@ class Beverages
   def initialize
     @itemSize = items.size
     @category = "Beverages"
+    db = Database.new
   end
 
   def insert_data()
-    db = Database.new
     db.insert(@items, @category)
+  end
+
+  def show_data()
+    puts "showing data of beverages"
   end
 end
